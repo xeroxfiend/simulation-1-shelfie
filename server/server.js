@@ -10,9 +10,9 @@ app.use(express.json());
 
 //endpoints
 
-// app.get
+app.get('/api/inventory', ctrl.getInventory)
 
-// app.post
+app.post('/api/product', ctrl.addNew)
 
 // app.put
 

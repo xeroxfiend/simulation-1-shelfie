@@ -1,22 +1,20 @@
-import React, {Component} from 'react'
-import Product from '../Product/Product'
+import React, {Component} from "react";
+import Product from "../Product/Product";
 
 class Dashboard extends Component {
-    constructor() {
-        super()
-        this.state = {
-            placeholder: 'state'
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      placeholder: "state"
+    };
+  }
 
-    render() {
-        return (
-            <div className="dashboard">
-                Dashboard
-                <Product />
-            </div>
-        )
-    }
+  render() {
+    const product = this.props.inventory.map(el => (
+      <Product productInfo={el} />
+    ));
+    return <div className="dashboard">{product}</div>;
+  }
 }
 
-export default Dashboard
+export default Dashboard;

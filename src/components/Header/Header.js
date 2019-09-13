@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import shelfieImg from '../../assets/shelfie.JPG'
 
 class Header extends Component {
     constructor() {
@@ -11,7 +12,7 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-                Header
+                <img height='50px' width='175px' className='shelfie-logo' src={shelfieImg} alt="shelfie logo"/>
             </div>
         )
     }
