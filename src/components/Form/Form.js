@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import imageDefault from "../../assets/imageDefault.JPG";
+import axios from "axios";
 
 class Form extends Component {
   constructor(props) {
@@ -9,6 +10,16 @@ class Form extends Component {
       name: "",
       price: null
     };
+  }
+
+  addNewProduct() {
+    axios
+      .post("/api/product", {
+        name: this.state.name,
+        price: this.state.price,
+        img: this.state.image
+      })
+      .then(this.props.getDataFn(), this.handleCancel());
   }
 
   handleImage(value) {
@@ -36,9 +47,21 @@ class Form extends Component {
       <div className="form">
         <div className="form-container">
           {this.state.image ? (
-            <img src={this.state.image} height='400px' width='250px' alt="image" className="image" />
+            <img
+              src={this.state.image}
+              height="400px"
+              width="250px"
+              alt="image"
+              className="image"
+            />
           ) : (
-            <img src={imageDefault} height='400px' width='250px' alt="default-image" className="image" />
+            <img
+              src={imageDefault}
+              height="400px"
+              width="250px"
+              alt="default-image"
+              className="image"
+            />
           )}
           <p className="image-url">Image URL:</p>
           <input
@@ -62,7 +85,7 @@ class Form extends Component {
             <button onClick={() => this.handleCancel()} className="cancel">
               Cancel
             </button>
-            <button className="Add">Add to Inventory</button>
+            <button onClick={() => this.addNewProduct()} className="Add">Add to Inventory</button>
           </div>
         </div>
       </div>

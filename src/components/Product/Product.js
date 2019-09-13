@@ -13,8 +13,8 @@ class Product extends Component {
       <div className="dash-container">
         <div className="product">
           <img
-            height="250px"
-            width="400px"
+            height="150px"
+            width="200px"
             src={this.props.productInfo.img}
             alt="product image"
             className="dash-image"

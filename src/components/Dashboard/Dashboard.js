@@ -10,8 +10,8 @@ class Dashboard extends Component {
   }
 
   render() {
-    const product = this.props.inventory.map(el => (
-      <Product productInfo={el} />
+    const product = this.props.inventory.map((el, i) => (
+      <Product productInfo={el} key={i} />
     ));
     return <div className="dashboard">{product}</div>;
   }
