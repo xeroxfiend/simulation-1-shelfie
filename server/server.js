@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const {SERVER_PORT, CONNECTION_STRING} = process.env;
 const massive = require("massive");
+const ctrl = require('./controllers/controller')
 
 app.use(express.json());
 
