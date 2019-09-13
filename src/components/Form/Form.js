@@ -19,7 +19,7 @@ class Form extends Component {
         price: this.state.price,
         img: this.state.image
       })
-      .then(props.getDataFn(), this.handleCancel(), document.location.reload() );
+      .then(this.props.getDataFn(), this.handleCancel());
   }
 
   handleImage(value) {
@@ -46,16 +46,16 @@ class Form extends Component {
           {this.state.image ? (
             <img
               src={this.state.image}
-              height="400px"
-              width="250px"
+              height="200px"
+              width="230px"
               alt="image"
               className="image"
             />
           ) : (
             <img
               src={imageDefault}
-              height="400px"
-              width="250px"
+              height="200px"
+              width="230px"
               alt="default-image"
               className="image"
             />

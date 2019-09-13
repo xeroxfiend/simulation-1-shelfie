@@ -36,7 +36,7 @@
     display: flex;
     height: 150px;
     width: 450px;
-    background: #AB2A19;
+    background: #D34735;
     padding: 20px;
     margin: 5px;
     border-radius: 10px;
@@ -44,7 +44,7 @@
 
 .form-container {
     margin: 50px;
-    height: 400px;
+    height: 500px;
     width: 300px;
     display: flex;
     flex-direction: column;
@@ -57,4 +57,24 @@
 .button-container {
     margin: 10px;
     display: flex;
+}
+
+img {
+    border-radius: 10px;
+}
+
+.delete {
+    background: #3AD886;
+}
+
+.edit {
+    background: #3AD886;
+}
+
+button {
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    margin: 20px;
+    background: #D34735;
 }

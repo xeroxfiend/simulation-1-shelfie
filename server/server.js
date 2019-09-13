@@ -16,7 +16,7 @@ app.post('/api/product', ctrl.addNew)
 
 // app.put
 
-// app.delete
+app.delete('/api/product/:id', ctrl.delete)
 
 massive(CONNECTION_STRING).then(db => {
   app.set("db", db);

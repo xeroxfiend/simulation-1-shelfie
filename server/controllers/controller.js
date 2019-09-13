@@ -9,12 +9,22 @@ module.exports = {
   },
 
   addNew: (req, res) => {
-      const {name, price, img} = req.body
-      const db = req.app.get("db");
+    const {name, price, img} = req.body;
+    const db = req.app.get("db");
     db.add_new_product([name, price, img])
       .then(result => {
         res.status(200).send(result);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
+  },
+
+  delete: (req, res) => {
+    const {id} = req.params;
+    const db = req.app.get("db");
+    db.delete(id)
+      .then(result => {
+        res.status(200).send(result);
+      })
+      .catch(err => console.log(err));
   }
 };
