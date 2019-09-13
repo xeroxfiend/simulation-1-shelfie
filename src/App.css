@@ -53,3 +53,8 @@
     border-radius: 10px;
     padding: 20px;
 }
+
+.button-container {
+    margin: 10px;
+    display: flex;
+}

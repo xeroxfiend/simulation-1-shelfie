@@ -12,7 +12,7 @@ class Header extends Component {
     render() {
         return (
             <div className="header">
-                <img height='50px' width='175px' className='shelfie-logo' src={shelfieImg} alt="shelfie logo"/>
+                <img height='44px' width='158px' className='shelfie-logo' src={shelfieImg} alt="shelfie logo"/>
             </div>
         )
     }

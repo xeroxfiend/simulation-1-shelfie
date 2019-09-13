@@ -12,29 +12,26 @@ class Form extends Component {
     };
   }
 
-  addNewProduct() {
+  addNewProduct(props) {
     axios
       .post("/api/product", {
         name: this.state.name,
         price: this.state.price,
         img: this.state.image
       })
-      .then(this.props.getDataFn(), this.handleCancel());
+      .then(props.getDataFn(), this.handleCancel(), document.location.reload() );
   }
 
   handleImage(value) {
     this.setState({image: value});
-    console.log(this.state.image);
   }
 
   handleName(value) {
     this.setState({name: value});
-    console.log(this.state.name);
   }
 
   handlePrice(value) {
     this.setState({price: value});
-    console.log(this.state.price);
   }
 
   handleCancel() {
@@ -85,7 +82,9 @@ class Form extends Component {
             <button onClick={() => this.handleCancel()} className="cancel">
               Cancel
             </button>
-            <button onClick={() => this.addNewProduct()} className="Add">Add to Inventory</button>
+            <button onClick={() => this.addNewProduct()} className="Add">
+              Add to Inventory
+            </button>
           </div>
         </div>
       </div>
