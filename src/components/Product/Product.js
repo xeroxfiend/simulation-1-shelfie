@@ -1,8 +1,9 @@
 import React, {Component} from "react";
+import axios from "axios";
 
 class Product extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       placeholder: "state"
     };
@@ -22,10 +23,17 @@ class Product extends Component {
           <div className="dash-text">
             <h3 className="dash-name">{this.props.productInfo.name}</h3>
             <h4 className="dash-price">${this.props.productInfo.price}</h4>
-          <div className="dash-buttons">
-              <button className="delete">Delete</button>
+            <div className="dash-buttons">
+              <button
+                onClick={() =>
+                  this.props.handleDelete(this.props.productInfo.id)
+                }
+                className="delete"
+              >
+                Delete
+              </button>
               <button className="edit">Edit</button>
-          </div>
+            </div>
           </div>
         </div>
       </div>

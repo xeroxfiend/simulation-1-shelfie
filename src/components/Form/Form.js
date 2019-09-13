@@ -8,7 +8,8 @@ class Form extends Component {
     this.state = {
       image: "",
       name: "",
-      price: null
+      price: null,
+      currentProduct: null
     };
   }
 

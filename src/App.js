@@ -9,7 +9,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      inventory: []
+      inventory: [],
+      currentProduct: {}
     };
     this.getData = this.getData.bind(this)
   }
@@ -29,8 +30,8 @@ class App extends Component {
       <div className="App">
         <Header />
         <div className="main">
-          <Dashboard inventory={this.state.inventory} />
-          <Form getDataFn={this.getData} />
+          <Dashboard getDataFn={this.getData} inventory={this.state.inventory} />
+          <Form currentProduct={this.state.currentProduct} getDataFn={this.getData} />
         </div>
       </div>
     );
