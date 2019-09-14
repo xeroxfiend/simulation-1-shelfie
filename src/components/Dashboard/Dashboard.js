@@ -12,7 +12,7 @@ class Dashboard extends Component {
   }
 
   handleDelete(id) {
-    axios.delete(`/api/product/${id}`).then(this.props.getDataFn());
+    axios.delete(`/api/product/${id}`).then(this.props.getDataFn);
   }
 
   render() {

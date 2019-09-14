@@ -20,7 +20,10 @@ class Form extends Component {
         price: this.state.price,
         img: this.state.image
       })
-      .then(this.props.getDataFn(), this.handleCancel());
+      .then(() => {
+        this.props.getDataFn();
+        this.handleCancel();
+      });
   }
 
   handleImage(value) {

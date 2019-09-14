@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import axios from "axios";
+import defaultImage from "../../assets/imageDefault.JPG";
 
 class Product extends Component {
   constructor(props) {
@@ -16,7 +16,7 @@ class Product extends Component {
           <img
             height="150px"
             width="200px"
-            src={this.props.productInfo.img}
+            src={this.props.productInfo.img ? this.props.productInfo.img : defaultImage }
             alt="product image"
             className="dash-image"
           />
