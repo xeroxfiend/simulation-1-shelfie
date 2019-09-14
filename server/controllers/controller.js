@@ -26,5 +26,16 @@ module.exports = {
         res.status(200).send(result);
       })
       .catch(err => console.log(err));
+  },
+
+  edit: (req, res) => {
+      const {id} = req.params
+      const {name, price, img} = req.body
+      const db = req.app.get("db");
+      db.edit({id, name, price, img})
+        .then(result => {
+          res.status(200).send(result);
+        })
+        .catch(err => console.log(err))
   }
 };
