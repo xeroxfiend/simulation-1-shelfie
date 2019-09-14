@@ -6,7 +6,6 @@
 .main {
     display: flex;
     justify-content: space-around;
-    align-items: center;
 }
 
 .header {
@@ -21,6 +20,11 @@
     margin-left: 40px;
 }
 
+.dashboard {
+    height: 100vh;
+    overflow: auto;
+}
+
 .dash-container {
     height: auto;
     display: flex;
@@ -32,26 +36,68 @@
     margin-left: 20px;
 }
 
+.dash-image {
+    height: 170px;
+    width: 265px;
+}
+
 .product {
     display: flex;
-    height: 150px;
-    width: 450px;
+    height: 170px;
+    width: 470px;
     background: #D34735;
     padding: 20px;
     margin: 5px;
     border-radius: 10px;
 }
 
+.product:hover {
+    transform: scale(1.01);
+    transition: .1s
+}
+
 .form-container {
     margin: 50px;
-    height: 500px;
+    height: 450px;
     width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
     background: #3AD886;
     border-radius: 10px;
-    padding: 20px;
+    padding: 40px 20px 0 20px;
+}
+
+.form-image {
+    height: 170px;
+    width: 265px;
+}
+
+.input-image-url {
+    width: 90%;
+    margin-top: -10px;
+}
+
+.input-product-name {
+    width: 90%;
+    margin-top: -10px;
+}
+
+.input-price {
+    width: 90%;
+    margin-top: -10px;
+}
+
+.image-url {
+    margin-left: -180px;
+}
+
+.price {
+    margin-left: -230px;
+}
+
+.product-name {
+    margin-left: -160px;
 }
 
 .button-container {
@@ -64,10 +110,12 @@ img {
 }
 
 .delete {
+    width: 50px;
     background: #3AD886;
 }
 
 .edit {
+    width: 50px;
     background: #3AD886;
 }
 
@@ -75,6 +123,44 @@ button {
     height: 30px;
     border-radius: 10px;
     border: none;
-    margin: 20px;
+    margin: 10px;
     background: #D34735;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+.dashboard::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 10px;
+    background: lightgrey;
+    height: 50px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(102, 101, 101);
 }

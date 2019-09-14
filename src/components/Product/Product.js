@@ -14,10 +14,10 @@ class Product extends Component {
       <div className="dash-container">
         <div className="product">
           <img
-            height="150px"
-            width="200px"
+            // height="150px"
+            // width="200px"
             src={this.props.productInfo.img ? this.props.productInfo.img : defaultImage }
-            alt="product image"
+            alt="product"
             className="dash-image"
           />
           <div className="dash-text">
