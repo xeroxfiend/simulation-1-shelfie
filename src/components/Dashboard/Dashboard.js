@@ -17,7 +17,7 @@ class Dashboard extends Component {
 
   render() {
     const product = this.props.inventory.map((el, i) => (
-      <Product handleDelete={this.handleDelete} productInfo={el} key={i} />
+      <Product selectedFn={this.props.selectedFn} handleDelete={this.handleDelete} productInfo={el} key={i} />
     ));
     return <div className="dashboard">{product}</div>;
   }

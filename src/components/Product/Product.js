@@ -30,7 +30,7 @@ class Product extends Component {
               >
                 Delete
               </button>
-              <button className="edit">Edit</button>
+              <button onClick={() => this.props.selectedFn(this.props.productInfo)} className="edit">Edit</button>
             </div>
           </div>
         </div>

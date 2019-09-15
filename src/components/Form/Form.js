@@ -13,7 +13,7 @@ class Form extends Component {
     };
   }
 
-  addNewProduct(props) {
+  addNewProduct() {
     axios
       .post("/api/product", {
         name: this.state.name,
@@ -25,6 +25,20 @@ class Form extends Component {
         this.handleCancel();
       });
   }
+
+  //   editProduct() {
+  //       axios.put(`/api/product/${this.state.currentProduct.id}`, this.state.currentProduct)
+  //   }
+
+  //   updateState() {
+  //     this.setState({currentProduct: this.props.currentProduct});
+  //   }
+
+  //   componentDidUpdate(prevProps) {
+  //     if (prevProps !== this.props.currentProduct) {
+  //       this.updateState();
+  //     }
+  //   }
 
   handleImage(value) {
     this.setState({image: value});
@@ -61,13 +75,27 @@ class Form extends Component {
   }
 
   render() {
+    // if (!this.state.currentProduct)  {
+    //   this.setState({currentProduct: this.props.currentProduct});
+    // }
+
+    // const inputValueUrl = document.getElementsByClassName("input-image-url");
+    // const inputValueName = document.getElementsByClassName(
+    //   "input-product-name"
+    // );
+    // const inputValuePrice = document.getElementsByClassName("input-price");
+
+    // if (this.state.currentProduct) {
+    //   inputValueUrl[0].value = this.state.currentProduct.img;
+    //   inputValueName[0].value = this.state.currentProduct.name;
+    //   inputValuePrice[0].value = this.state.currentProduct.price;
+    // }
+
     return (
       <div className="form">
         <div className="form-container">
           <img
             src={this.state.image ? this.state.image : imageDefault}
-            // height="200px"
-            // width="230px"
             alt="product"
             className="image form-image"
           />

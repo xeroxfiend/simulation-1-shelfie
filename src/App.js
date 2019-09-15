@@ -1,18 +1,19 @@
 import React, {Component} from "react";
+import axios from "axios";
 import "./App.css";
 import Header from "./components/Header/Header";
 import Dashboard from "./components/Dashboard/Dashboard";
 import Form from "./components/Form/Form";
-import axios from "axios";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       inventory: [],
-      currentProduct: {}
+      currentProduct: null
     };
     this.getData = this.getData.bind(this)
+    this.currentSelected = this.currentSelected.bind(this)
   }
 
   getData() {
@@ -25,12 +26,17 @@ class App extends Component {
     this.getData();
   }
 
+  currentSelected(obj) {
+    this.setState({currentProduct: obj})
+    console.log(this.state.currentProduct)
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
         <div className="main">
-          <Dashboard getDataFn={this.getData} inventory={this.state.inventory} />
+          <Dashboard selectedFn={this.currentSelected} getDataFn={this.getData} inventory={this.state.inventory} />
           <Form currentProduct={this.state.currentProduct} getDataFn={this.getData} />
         </div>
       </div>
