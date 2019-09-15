@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import defaultImage from "../../assets/imageDefault.JPG";
+import {Link} from "react-router-dom";
 
 class Product extends Component {
   constructor(props) {
@@ -14,7 +15,11 @@ class Product extends Component {
       <div className="dash-container">
         <div className="product">
           <img
-            src={this.props.productInfo.img ? this.props.productInfo.img : defaultImage }
+            src={
+              this.props.productInfo.img
+                ? this.props.productInfo.img
+                : defaultImage
+            }
             alt="product"
             className="dash-image"
           />
@@ -30,7 +35,9 @@ class Product extends Component {
               >
                 Delete
               </button>
-              <button onClick={() => this.props.selectedFn(this.props.productInfo)} className="edit">Edit</button>
+              <Link to={`/edit/${this.props.productInfo.id}`}>
+                <button>Edit</button>
+              </Link>
             </div>
           </div>
         </div>
