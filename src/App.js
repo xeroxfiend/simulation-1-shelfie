@@ -28,7 +28,6 @@ class App extends Component {
 
   currentSelected(obj) {
     this.setState({currentProduct: obj})
-    console.log(this.state.currentProduct)
   }
 
   render() {

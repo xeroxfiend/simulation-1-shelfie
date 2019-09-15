@@ -35,9 +35,11 @@ class Form extends Component {
   //   }
 
   //   componentDidUpdate(prevProps) {
-  //     if (prevProps !== this.props.currentProduct) {
-  //       this.updateState();
-  //     }
+  //   console.log(`prevProps: ${prevProps}, currentProps: ${this.props.currentProduct}`)
+  // if (prevProps.name !== this.props.currentProduct.name) {
+  //   this.setState({currentProduct: this.props.currentProduct});
+  // this.updateState();
+  // }
   //   }
 
   handleImage(value) {

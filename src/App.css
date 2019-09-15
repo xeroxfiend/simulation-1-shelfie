@@ -39,7 +39,7 @@
 }
 
 .dash-image {
-    height: 170px;
+    height: 171px;
     width: 265px;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .form-image {
-    height: 170px;
+    height: 171px;
     width: 265px;
 }
 
@@ -131,7 +131,7 @@ button {
     border-radius: 10px;
     border: none;
     margin: 10px;
-    background: #D34735;
+    background: #ED6B5A;
     cursor: pointer;
 }
 
@@ -141,7 +141,6 @@ button:hover {
 
 .dashboard::-webkit-scrollbar {
     width: 10px;
-    border-radius: 10px;
     background: lightgrey;
     height: 50px;
 }
@@ -162,7 +161,6 @@ button:hover {
 
 ::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 10px;
 }
 
 
