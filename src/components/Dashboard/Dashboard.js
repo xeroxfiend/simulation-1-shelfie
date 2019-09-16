@@ -9,6 +9,7 @@ class Dashboard extends Component {
         inventory: [],
     };
     this.handleDelete = this.handleDelete.bind(this);
+    this.getData = this.getData.bind(this)
   }
 
   getData() {
@@ -22,7 +23,7 @@ class Dashboard extends Component {
   }
 
   handleDelete(id) {
-    axios.delete(`/api/product/${id}`).then(this.getDataFn);
+    axios.delete(`/api/product/${id}`).then(this.getData);
   }
 
   render() {

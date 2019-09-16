@@ -17,7 +17,6 @@ class Header extends Component {
                 <img height='44px' width='158px' className='shelfie-logo' src={shelfieImg} alt="shelfie logo"/>
                 <Link to='/' className='nav'>Dashboard</Link>
                 <Link to='/add' className='nav'>Add to Inventory</Link>
-                {routes}
             </div>
         )
     }

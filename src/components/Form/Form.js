@@ -6,11 +6,17 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: "",
-      name: "",
-      price: null,
       currentProduct: null
     };
+  }
+
+  componentDidMount() {
+    if (this.props.match.id) {
+      axios.get(`/api/inventory/${this.props.match.id}`).then(res => {
+        this.setState({currentProduct: res.data});
+        console.log(this.state.currentProduct)
+      });
+    }
   }
 
   addNewProduct() {
@@ -21,8 +27,8 @@ class Form extends Component {
         img: this.state.image
       })
       .then(() => {
-        this.props.getDataFn();
-        this.handleCancel();
+        this.props.history.push("/");
+        // this.handleCancel();
       });
   }
 
@@ -55,15 +61,29 @@ class Form extends Component {
   }
 
   handleCancel() {
-    this.setState({image: "", name: "", price: null});
-    const inputValueUrl = document.getElementsByClassName("input-image-url");
-    const inputValueName = document.getElementsByClassName(
-      "input-product-name"
-    );
-    const inputValuePrice = document.getElementsByClassName("input-price");
-    inputValueUrl[0].value = "";
-    inputValueName[0].value = "";
-    inputValuePrice[0].value = "";
+    this.props.history.push("/");
+    // this.setState({image: "", name: "", price: null});
+    // const inputValueUrl = document.getElementsByClassName("input-image-url");
+    // const inputValueName = document.getElementsByClassName(
+    //   "input-product-name"
+    // );
+    // const inputValuePrice = document.getElementsByClassName("input-price");
+    // inputValueUrl[0].value = "";
+    // inputValueName[0].value = "";
+    // inputValuePrice[0].value = "";
+  }
+
+  updateProduct() {
+    axios
+      .put("/api/product", {
+        name: this.state.name,
+        price: this.state.price,
+        img: this.state.image
+      })
+      .then(() => {
+        this.props.history.push("/");
+        // this.handleCancel();
+      });
   }
 
   validate(evt) {
@@ -128,9 +148,15 @@ class Form extends Component {
             <button onClick={() => this.handleCancel()} className="cancel">
               Cancel
             </button>
-            <button onClick={() => this.addNewProduct()} className="Add">
-              Add to Inventory
-            </button>
+            {this.props.match.id ? (
+              <button onClick={() => this.updateProduct()} className="Update">
+                Update
+              </button>
+            ) : (
+              <button onClick={() => this.addNewProduct()} className="Add">
+                Add to Inventory
+              </button>
+            )}
           </div>
         </div>
       </div>

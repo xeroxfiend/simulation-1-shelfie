@@ -11,6 +11,8 @@ app.use(express.json());
 //endpoints
 app.get('/api/inventory', ctrl.getInventory)
 
+app.get('/api/inventory/:id', ctrl.getOneProduct)
+
 app.post('/api/product', ctrl.addNew)
 
 app.put('/api/product/:id', ctrl.edit)

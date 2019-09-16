@@ -8,6 +8,16 @@ module.exports = {
       .catch(err => console.log(err));
   },
 
+  getOneProduct: (req, res) => {
+      const {id} = req.params
+    const db = req.app.get("db");
+    db.get_one_product(id)
+      .then(result => {
+        res.status(200).send(result);
+      })
+      .catch(err => console.log(err))
+  },
+
   addNew: (req, res) => {
     const {name, price, img} = req.body;
     const db = req.app.get("db");
