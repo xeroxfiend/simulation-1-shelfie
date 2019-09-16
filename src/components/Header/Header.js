@@ -1,25 +1,35 @@
-import React, {Component} from 'react'
-import shelfieImg from '../../assets/shelfie.JPG'
-import {Link} from 'react-router-dom'
-import routes from '../../routes'
+import React, {Component} from "react";
+import shelfieImg from "../../assets/shelfie.JPG";
+import {Link} from "react-router-dom";
+import routes from "../../routes";
 
 class Header extends Component {
-    constructor() {
-        super()
-        this.state = {
-            placeholder: 'state'
-        }
-    }
+  constructor() {
+    super();
+    this.state = {
+      placeholder: "state"
+    };
+  }
 
-    render() {
-        return (
-            <div className="header">
-                <img height='44px' width='158px' className='shelfie-logo' src={shelfieImg} alt="shelfie logo"/>
-                <Link to='/' className='nav'>Dashboard</Link>
-                <Link to='/add' className='nav'>Add to Inventory</Link>
-            </div>
-        )
-    }
+  render() {
+    return (
+      <div className="header">
+        <img
+          height="44px"
+          width="158px"
+          className="shelfie-logo"
+          src={shelfieImg}
+          alt="shelfie logo"
+        />
+        <Link to="/" className="nav">
+          <button className="nav-btn">Dashboard</button>
+        </Link>
+        <Link to="/add" className="nav">
+          <button className="nav-btn">Add to Inventory</button>
+        </Link>
+      </div>
+    );
+  }
 }
 
-export default Header
+export default Header;

@@ -169,3 +169,8 @@ button:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(102, 101, 101);
 }
+
+.nav {
+    /* padding: ; */
+    margin-left: 40px;
+}
