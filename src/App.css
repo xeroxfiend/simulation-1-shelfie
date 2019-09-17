@@ -171,6 +171,14 @@ button:hover {
 }
 
 .nav {
-    /* padding: ; */
     margin-left: 40px;
+}
+
+.nav-btn-add {
+    margin-left: -10px;
+}
+
+.nav-btn-dash {
+    margin-right: -10px;
+    margin-left: 90px;
 }

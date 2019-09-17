@@ -21,10 +21,10 @@ class Header extends Component {
           alt="shelfie logo"
         />
         <Link to="/" className="nav">
-          <button className="nav-btn">Dashboard</button>
+          <button className="nav-btn-dash">Dashboard</button>
         </Link>
         <Link to="/add" className="nav">
-          <button className="nav-btn">Add to Inventory</button>
+          <button className="nav-btn-add">Add to Inventory</button>
         </Link>
       </div>
     );

@@ -21,10 +21,10 @@ class Form extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // console.log("PrevProps", prevProps);
-    // console.log("PrevState", prevState);
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   console.log("PrevProps", prevProps);
+  //   console.log("PrevState", prevState);
+  // }
 
   addNewProduct() {
     axios
@@ -87,14 +87,13 @@ class Form extends Component {
     );
     const inputValuePrice = document.getElementsByClassName("input-price");
 
-    // maybe use these????????????^^^^^^^^^^^^^^^^^^^^^^^^^
-    
+    // maybe use these????????????^^^^^^^^^^^^^^^^^^^^^^^^^    
 
     axios
       .put(`/api/product/${this.props.match.params.id}`, {
-        name: this.state.name,
-        price: this.state.price,
-        img: this.state.image
+        name: this.state.name ? this.state.name : this.state.currentProduct.name,
+        price: this.state.price ? this.state.price : this.state.currentProduct.price,
+        img: this.state.image ? this.state.image : this.state.currentProduct.img
       })
       .then(() => {
         this.props.history.push("/");
@@ -168,7 +167,7 @@ class Form extends Component {
 
           <p className="image-url">Image URL:</p>
           <input
-            value={imgUrlText}
+            defaultValue={this.state.currentProduct && this.state.currentProduct.img ? this.state.currentProduct.img : ''}
             placeholder="Copy & Paste an Image URL"
             onKeyPress={e => this.validate(e)}
             onChange={e => this.handleImage(e.target.value)}
@@ -177,7 +176,7 @@ class Form extends Component {
           />
           <p className="product-name">Product Name:</p>
           <input
-            value={nameText}
+            defaultValue={this.state.currentProduct && this.state.currentProduct.name ? this.state.currentProduct.name : ''}
             placeholder="Product Name"
             onChange={e => this.handleName(e.target.value)}
             type="text"
@@ -185,7 +184,7 @@ class Form extends Component {
           />
           <p className="price">Price:</p>
           <input
-            value={priceText}
+            defaultValue={this.state.currentProduct && this.state.currentProduct.price ? this.state.currentProduct.price : ''}
             placeholder="Price"
             onChange={e => this.handlePrice(e.target.value)}
             type="text"
