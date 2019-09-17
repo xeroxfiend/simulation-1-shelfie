@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import shelfieImg from "../../assets/shelfie.JPG";
 import {Link} from "react-router-dom";
-import routes from "../../routes";
 
 class Header extends Component {
   constructor() {

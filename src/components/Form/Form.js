@@ -6,17 +6,24 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      image: "",
+      name: "",
+      price: null,
       currentProduct: null
     };
   }
 
   componentDidMount() {
-    if (this.props.match.id) {
-      axios.get(`/api/inventory/${this.props.match.id}`).then(res => {
-        this.setState({currentProduct: res.data});
-        console.log(this.state.currentProduct)
+    if (this.props.match.params.id) {
+      axios.get(`/api/inventory/${this.props.match.params.id}`).then(res => {
+        this.setState({currentProduct: res.data[0]});
       });
     }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log("PrevProps", prevProps);
+    // console.log("PrevState", prevState);
   }
 
   addNewProduct() {
@@ -61,8 +68,8 @@ class Form extends Component {
   }
 
   handleCancel() {
+    // this.setState({image: "", name: "", price: null, currentProduct: null});
     this.props.history.push("/");
-    // this.setState({image: "", name: "", price: null});
     // const inputValueUrl = document.getElementsByClassName("input-image-url");
     // const inputValueName = document.getElementsByClassName(
     //   "input-product-name"
@@ -74,15 +81,23 @@ class Form extends Component {
   }
 
   updateProduct() {
+    const inputValueUrl = document.getElementsByClassName("input-image-url");
+    const inputValueName = document.getElementsByClassName(
+      "input-product-name"
+    );
+    const inputValuePrice = document.getElementsByClassName("input-price");
+
+    // maybe use these????????????^^^^^^^^^^^^^^^^^^^^^^^^^
+    
+
     axios
-      .put("/api/product", {
+      .put(`/api/product/${this.props.match.params.id}`, {
         name: this.state.name,
         price: this.state.price,
         img: this.state.image
       })
       .then(() => {
         this.props.history.push("/");
-        // this.handleCancel();
       });
   }
 
@@ -112,18 +127,48 @@ class Form extends Component {
     //   inputValueName[0].value = this.state.currentProduct.name;
     //   inputValuePrice[0].value = this.state.currentProduct.price;
     // }
+    let imgSrc = "";
+    let imgUrlText = "";
+
+    if (this.state.image) {
+      imgSrc = this.state.image;
+      imgUrlText = this.state.image;
+    } else if (this.state.currentProduct && this.state.currentProduct.img) {
+      imgSrc = this.state.currentProduct.img;
+      imgUrlText = this.state.currentProduct.img;
+    } else {
+      imgSrc = imageDefault;
+      imgUrlText = "";
+    }
+
+    let nameText = "";
+
+    if (this.state.name) {
+      nameText = this.state.name;
+    } else if (this.state.currentProduct && this.state.currentProduct.name) {
+      nameText = this.state.currentProduct.name;
+    } else {
+      nameText = "";
+    }
+
+    let priceText = "";
+
+    if (this.state.price) {
+      priceText = this.state.price;
+    } else if (this.state.currentProduct && this.state.currentProduct.price) {
+      priceText = this.state.currentProduct.price;
+    } else {
+      priceText = "";
+    }
 
     return (
       <div className="form">
         <div className="form-container">
-          <img
-            src={this.state.image ? this.state.image : imageDefault}
-            alt="product"
-            className="image form-image"
-          />
+          <img src={imgSrc} alt="product" className="image form-image" />
 
           <p className="image-url">Image URL:</p>
           <input
+            value={imgUrlText}
             placeholder="Copy & Paste an Image URL"
             onKeyPress={e => this.validate(e)}
             onChange={e => this.handleImage(e.target.value)}
@@ -132,6 +177,7 @@ class Form extends Component {
           />
           <p className="product-name">Product Name:</p>
           <input
+            value={nameText}
             placeholder="Product Name"
             onChange={e => this.handleName(e.target.value)}
             type="text"
@@ -139,6 +185,7 @@ class Form extends Component {
           />
           <p className="price">Price:</p>
           <input
+            value={priceText}
             placeholder="Price"
             onChange={e => this.handlePrice(e.target.value)}
             type="text"
@@ -148,7 +195,7 @@ class Form extends Component {
             <button onClick={() => this.handleCancel()} className="cancel">
               Cancel
             </button>
-            {this.props.match.id ? (
+            {this.props.match.params.id ? (
               <button onClick={() => this.updateProduct()} className="Update">
                 Update
               </button>

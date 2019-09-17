@@ -9,13 +9,13 @@ module.exports = {
   },
 
   getOneProduct: (req, res) => {
-      const {id} = req.params
+    const {id} = req.params;
     const db = req.app.get("db");
     db.get_one_product(id)
       .then(result => {
         res.status(200).send(result);
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   },
 
   addNew: (req, res) => {
@@ -39,13 +39,13 @@ module.exports = {
   },
 
   edit: (req, res) => {
-      const {id} = req.params
-      const {name, price, img} = req.body
-      const db = req.app.get("db");
-      db.edit({id, name, price, img})
-        .then(result => {
-          res.status(200).send(result);
-        })
-        .catch(err => console.log(err))
+    const {id} = req.params;
+    const {name, price, img} = req.body;
+    const db = req.app.get("db");
+    db.edit({id, name, price, img})
+      .then(result => {
+        res.status(200).send(result);
+      })
+      .catch(err => console.log(err));
   }
 };
